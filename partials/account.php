@@ -1,4 +1,6 @@
 <?php
+require '../includes/function.php';
+logged_only();
 require '../includes/header.php';
 ?>
 

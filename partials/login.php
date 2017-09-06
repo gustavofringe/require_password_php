@@ -1,11 +1,12 @@
 <?php
 $password = 'kangourou';
+session_start();
 if(!empty($_POST)){
     if(empty($_POST['username']) || !preg_match('/^[a-zA-Z0-9_]+$/', $_POST['username'])){
         $errors['username'] = "Vous n'avez pas entrer de pseudo valide";
     }
     if(empty($_POST['password']) || $_POST['password'] != $password){
-        $errors['password'] = "Vous devez rentrer le même mot de passe ";
+        $errors['password'] = "nononon";
     }
     if(empty($errors)){
         $_SESSION['auth'] = $_POST['username'];
