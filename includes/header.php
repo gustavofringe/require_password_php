@@ -1,5 +1,6 @@
 <?php
 require 'function.php';
+session_start();
 ?>
 <!doctype html>
 <html class="no-js" lang="">
@@ -26,12 +27,13 @@ require 'function.php';
                 <li class="nav-item">
                     <a class="nav-link active" href="<?= BASE_URL; ?>">Home <span class="sr-only">(current)</span></a>
                 </li>
+                 <?php if(!isset($_SESSION['auth'])): ?>
                 <li class="nav-item">
                     <a class="nav-link" href="<?= BASE_URL; ?>partials/login.php">Login</a>
                 </li>
-                <?php if(isset($_SESSION['auth'])): ?>
+               <?php else: ?>
                 <li class="nav-item">
-                    <a class="nav-link" href="<?= BASE_URL; ?>partials/account.php">Account</a>
+                    <a class="nav-link" href="<?= BASE_URL; ?>partials/logout.php">Se déconnecter</a>
                 </li>
                 <?php endif; ?>
             </ul>

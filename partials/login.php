@@ -1,5 +1,4 @@
 <?php
-session_start();
 $password = 'kangourou';
 if(!empty($_POST)){
     if(empty($_POST['username']) || !preg_match('/^[a-zA-Z0-9_]+$/', $_POST['username'])){
@@ -9,8 +8,9 @@ if(!empty($_POST)){
         $errors['password'] = "Vous devez rentrer le même mot de passe ";
     }
     if(empty($errors)){
+        $_SESSION['auth'] = $_POST['username'];
         header('Location: account.php');
-        exit();
+        die();
     }
 }
 
