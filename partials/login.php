@@ -1,4 +1,5 @@
 <?php
+require '../includes/function.php';
 $password = 'kangourou';
 session_start();
 if(!empty($_POST)){
@@ -6,17 +7,18 @@ if(!empty($_POST)){
         $errors['username'] = "Vous n'avez pas entrer de pseudo valide";
     }
     if(empty($_POST['password']) || $_POST['password'] != $password){
-        $errors['password'] = "nononon";
+        $errors['password'] = "votre mot de passe est invalide";
     }
     if(empty($errors)){
         $_SESSION['auth'] = $_POST['username'];
+        $_SESSION['flash']['success'] = "Vous êtes maintenant connecté";
         header('Location: account.php');
         die();
     }
 }
 
 ?>
-<?php require '../includes/header.php'; ?>
+<?php include '../includes/header.php'; ?>
 
     <h1>Se connecter</h1>
 
@@ -44,5 +46,4 @@ if(!empty($_POST)){
         </div>
         <button class="btn btn-primary">Se connecter</button>
     </form>
-
-<?php require '../includes/footer.php'; ?>
+<?php include '../includes/footer.php'; ?>

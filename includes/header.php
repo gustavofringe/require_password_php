@@ -1,4 +1,3 @@
-
 <!doctype html>
 <html class="no-js" lang="">
 <head>
@@ -21,30 +20,30 @@
     <div class="header clearfix">
         <nav>
             <ul class="nav nav-pills float-right">
-                <li class="nav-item">
-                    <a class="nav-link active" href="<?= BASE_URL; ?>">Home <span class="sr-only">(current)</span></a>
-                </li>
-                 <?php if(!isset($_SESSION['auth'])): ?>
-                <li class="nav-item">
-                    <a class="nav-link" href="<?= BASE_URL; ?>partials/login.php">Login</a>
-                </li>
-               <?php else: ?>
-                <li class="nav-item">
-                    <a class="nav-link" href="<?= BASE_URL; ?>partials/logout.php">Se déconnecter</a>
-                </li>
+                <?php if (!isset($_SESSION['auth'])): ?>
+                    <li class="nav-item">
+                        <a class="nav-link" href="<?= BASE_URL; ?>partials/login.php">Login</a>
+                    </li>
+                <?php else: ?>
+                    <li class="nav-item">
+                        <a class="nav-link" href="<?= BASE_URL; ?>partials/account.php">Mon compte</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="<?= BASE_URL; ?>partials/logout.php">Se déconnecter</a>
+                    </li>
                 <?php endif; ?>
             </ul>
         </nav>
         <h3 class="text-muted">Project name</h3>
     </div>
 
-<div class="container">
+    <div class="container">
 
-    <?php if (isset($_SESSION['flash'])): ?>
-    <?php foreach ($_SESSION['flash'] as $type => $message): ?>
-        <div class="alert alert-<?= $type; ?>">
-            <?= $message; ?>
-        </div>
-    <?php endforeach; ?>
-    <?php unset($_SESSION['flash']); ?>
+        <?php if (isset($_SESSION['flash'])): ?>
+        <?php foreach ($_SESSION['flash'] as $type => $message): ?>
+            <div class="alert alert-<?= $type; ?>">
+                <?= $message; ?>
+            </div>
+        <?php endforeach; ?>
+        <?php unset($_SESSION['flash']); ?>
 <?php endif; ?>
